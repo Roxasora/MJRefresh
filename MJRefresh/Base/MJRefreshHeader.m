@@ -132,7 +132,9 @@
                 // 设置滚动位置
                 [self.scrollView setContentOffset:CGPointMake(0, -top) animated:NO];
             } completion:^(BOOL finished) {
-                [self executeRefreshingCallback];
+                if (self.state == MJRefreshStateRefreshing) {
+                    [self executeRefreshingCallback];
+                }
             }];
          });
     }
