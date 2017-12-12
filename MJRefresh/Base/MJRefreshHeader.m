@@ -66,7 +66,7 @@
     }
     
     // 跳转到下一个控制器时，contentInset可能会变
-     _scrollViewOriginalInset = self.scrollView.contentInset;
+     _scrollViewOriginalInset = self.scrollView.mj_inset;
     
     // 当前的contentOffset
     CGFloat offsetY = self.scrollView.mj_offsetY;
@@ -132,6 +132,7 @@
                 // 设置滚动位置
                 [self.scrollView setContentOffset:CGPointMake(0, -top) animated:NO];
             } completion:^(BOOL finished) {
+//                [self executeRefreshingCallback];
                 if (self.state == MJRefreshStateRefreshing) {
                     [self executeRefreshingCallback];
                 }
